@@ -1,3 +1,141 @@
-* {
-  background-color: red;
+:root {
+  --darkcol: #26161c;
+  --lightyellow: #ffd365;
+  --darkyellow: #f78d2f;
+  --green: #156745;
+  --darkpurple: #a33756;
+  --whiteopa50: rgba(255, 255, 255, 0.5);
+  --whiteopa80: rgba(255, 255, 255, 0.8);
+  background-color: var(--lightyellow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Karla", sans-serif;
+  color: var(--darkcol);
+}
+
+p {
+  font-family: "Spectral", serif;
+  color: var(--darkcol);
+}
+
+.hs {
+  background-color: var(--whiteopa80);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.hshead {
+  background-color: var(--whiteopa50);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+header {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.timeleft {
+  background-color: var(--whiteopa80);
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 100px;
+  position: absolute;
+  right: 30px;
+}
+
+.timeleft p {
+  font-family: "Karla", sans-serif;
+}
+
+.viewhs {
+  background-color: var(--darkyellow);
+  display: inline-block;
+  padding: 20px;
+  margin-left: 20px;
+  border-radius: 100px;
+  position: absolute;
+  color: var(--darkcol);
+  font-family: "Karla", sans-serif;
+}
+
+a:active,
+a:link,
+a:visited,
+a:hover {
+  color: var(--darkcol);
+  text-decoration: none;
+}
+
+body,
+h1 {
+  margin: 0;
+}
+
+#question {
+  background-color: var(--whiteopa50);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.answers {
+  margin: 20px;
+}
+
+.correct {
+  margin: 20px;
+  color: var(--green);
+  padding-left: 20px;
+}
+
+.correct p {
+  color: var(--green);
+  font-family: "Karla", sans-serif;
+  font-size: 1.2rem;
+}
+
+#a1,
+#a2,
+#a3,
+#a4 {
+  background-color: var(--whiteopa80);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+hr {
+  border-width: 0;
+  height: 3px;
+  background-color: var(--darkyellow);
+  margin: 20px;
+}
+
+#hscores {
+  background-color: var(--darkyellow);
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+#main {
+  padding-bottom: 300px;
+}
+
+@media screen and (min-width: 600px) {
+  #main,
+  #hscon {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
