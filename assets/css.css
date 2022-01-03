@@ -89,6 +89,31 @@ h1 {
   border-radius: 10px;
 }
 
+.intro h1,
+.intro p {
+  text-align: center;
+}
+
+#startbut {
+  background-color: var(--darkyellow);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#back {
+  background-color: var(--lightyellow);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Karla", sans-serif;
+}
+
+#backbtn {
+  padding-top: 20px;
+}
+
 .answers {
   margin: 20px;
 }
@@ -124,11 +149,11 @@ hr {
 #hscores {
   background-color: var(--darkyellow);
   padding-top: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 500px;
 }
 
 #main {
-  padding-bottom: 300px;
+  padding-bottom: 2000px;
 }
 
 @media screen and (min-width: 600px) {
