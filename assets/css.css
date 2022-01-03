@@ -118,14 +118,26 @@ h1 {
   margin: 20px;
 }
 
-.correct {
+#correct {
   margin: 20px;
   color: var(--green);
   padding-left: 20px;
 }
 
-.correct p {
+#correct p {
   color: var(--green);
+  font-family: "Karla", sans-serif;
+  font-size: 1.2rem;
+}
+
+#incorrect {
+  margin: 20px;
+  color: var(--green);
+  padding-left: 20px;
+}
+
+#incorrect p {
+  color: var(--darkpurple);
   font-family: "Karla", sans-serif;
   font-size: 1.2rem;
 }
