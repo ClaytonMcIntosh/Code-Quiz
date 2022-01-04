@@ -24,6 +24,16 @@ p {
   color: var(--darkcol);
 }
 
+button {
+  font-family: "Spectral", serif;
+  margin-top: 20px;
+  color: var(--darkcol);
+  display: block;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
 .hs {
   background-color: var(--whiteopa80);
   padding: 20px;
@@ -94,7 +104,8 @@ h1 {
   text-align: center;
 }
 
-#startbut {
+#startbut,
+#restart {
   background-color: var(--darkyellow);
   margin: 20px;
   padding: 20px;

@@ -3,14 +3,15 @@ var startButton = document.getElementById("startbut");
 var questionB = document.getElementById("question");
 var questionText = document.getElementById("questionText");
 var answersB = document.getElementById("answers");
-var answer1 = document.getElementById("a1");
-var answer2 = document.getElementById("a2");
-var answer3 = document.getElementById("a3");
-var answer4 = document.getElementById("a4");
 var correctInfo = document.getElementById("correct");
+var enterHighScores = document.getElementById("enterHS");
 var incorrectInfo = document.getElementById("incorrect");
 var timer = document.getElementById("timeCount");
-var time = 100;
+var timebox = document.getElementById("timeleft");
+var mainHead = document.getElementById("mainh1");
+var mainPtag = document.getElementById("mainp");
+var startOver = document.getElementById("restart");
+var time = 99;
 var questionNum = 0;
 
 //below are the question and answer objects in an array
@@ -48,7 +49,7 @@ const questions = [
   {
     questionNumber: 4,
     question: "Q4. Arrays are surrounded by...?",
-    answer1: "A. []",
+    answer1: "A. [ ]",
     answer2: "B. numbers",
     answer3: "C. //* *//",
     answer4: "D. if/else",
@@ -69,7 +70,7 @@ const questions = [
     answer1: "A. pop()",
     answer2: "B. pip()",
     answer3: "C. put()",
-    answer4: "D. place();",
+    answer4: "D. place()",
     correctAnswer: 1,
   },
   {
@@ -78,7 +79,7 @@ const questions = [
     answer1: "A. Data Only Method",
     answer2: "B. Data Object Map",
     answer3: "C. Do Only the Minimum",
-    answer4: "D. Document Object Model;",
+    answer4: "D. Document Object Model",
     correctAnswer: 4,
   },
   {
@@ -87,7 +88,7 @@ const questions = [
     answer1: "A. Application Password Input",
     answer2: "B. APplicatIon",
     answer3: "C. Adjustable Programing Intelligent",
-    answer4: "D. Application Program Interface;",
+    answer4: "D. Application Program Interface",
     correctAnswer: 4,
   },
   {
@@ -113,6 +114,11 @@ const questions = [
 //Event listener to start the game.
 startButton.addEventListener("click", startGame);
 
+//function to reset game
+function reload() {
+  window.location.reload();
+}
+
 //initiate function to prepare the game
 
 function init() {
@@ -128,6 +134,8 @@ function hideAtStart() {
   answersB.style.display = "none";
   correctInfo.style.display = "none";
   incorrectInfo.style.display = "none";
+  enterHighScores.style.display = "none";
+  startOver.style.display = "none";
 }
 
 //Function to start the game once the start button has been clicked.
@@ -136,8 +144,6 @@ function startGame() {
   startTimer();
   loadQuestion();
 }
-
-//loading question
 
 //On click of "Start", unhide questions and answers
 
@@ -152,79 +158,39 @@ function unHideQandA() {
 function startTimer() {
   setInterval(function () {
     timer.textContent = time--;
+    if (time < 0) {
+      timesUp();
+    }
   }, 1000);
 }
 
-//fill in the quesion.
+//function to fill in the quesions.
 
 function loadQuestion() {
-  console.log(questionNum);
   var currentQuestion = questions[questionNum];
   questionText.textContent = currentQuestion.question;
-  answer1.textContent = currentQuestion.answer1;
-  answer2.textContent = currentQuestion.answer2;
-  answer3.textContent = currentQuestion.answer3;
-  answer4.textContent = currentQuestion.answer4;
 
-  //adding eventlisteners to check for correct answers.
+  answersB.innerHTML = "";
 
-  answer1.addEventListener(
-    "click",
-    function () {
-      if (currentQuestion.correctAnswer === 1) {
+  //creating the buttons and the event listener
+
+  for (let i = 1; i < 5; i++) {
+    var button = document.createElement("button");
+    button.textContent = currentQuestion[`answer${i}`];
+    button.id = `a${i}`;
+    answersB.appendChild(button);
+
+    button.addEventListener("click", function () {
+      if (currentQuestion.correctAnswer === i) {
         checkAnswer(true);
-        return;
       } else {
         checkAnswer(false);
-        return;
       }
-    },
-    { once: true }
-  );
+    });
+  }
 
-  answer2.addEventListener(
-    "click",
-    function () {
-      if (currentQuestion.correctAnswer === 2) {
-        checkAnswer(true);
-        return;
-      } else {
-        checkAnswer(false);
-        return;
-      }
-    },
-    { once: true }
-  );
-
-  answer3.addEventListener(
-    "click",
-    function () {
-      console.log("Number3", currentQuestion.correctAnswer);
-      if (currentQuestion.correctAnswer === 3) {
-        checkAnswer(true);
-        return;
-      } else {
-        checkAnswer(false);
-        return;
-      }
-    },
-    { once: true }
-  );
-
-  answer4.addEventListener(
-    "click",
-    function () {
-      if (currentQuestion.correctAnswer === 4) {
-        checkAnswer(true);
-        return;
-      } else {
-        checkAnswer(false);
-        return;
-      }
-    },
-    { once: true }
-  );
   questionNum = questionNum + 1;
+  return;
 }
 
 // Adding a function to move to next question
@@ -235,29 +201,35 @@ function checkAnswer(x) {
     setInterval(function () {
       correctInfo.style.display = "none";
     }, 2000);
-    console.log("True!");
   } else {
     incorrectInfo.style.display = "block";
     setInterval(function () {
       incorrectInfo.style.display = "none";
     }, 2000);
     time = time - 10;
-    console.log("False!");
   }
-
   loadQuestion();
 }
 
 //Start the game:
 init();
 
-//when the new time updates, the status (correct/incorrect) shows for 2 seconds.
-
-//On click of incorrect answer, time is subtracted from clock (10 secs)
-
 //When all questions are answered the game ends
 
 //When the timer reaches 0 the game ends
+
+function timesUp() {
+  questionB.style.display = "none";
+  answersB.style.display = "none";
+  timebox.style.display = "none";
+  enterHighScores.style.display = "none";
+  mainHead.textContent = "Time's up!";
+  mainPtag.textContent = "You're time ran out! Try again!!!";
+  startOver.style.display = "block";
+  startOver.addEventListener("click", function () {
+    reload();
+  });
+}
 
 //User will enter name into high scores.
 
