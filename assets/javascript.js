@@ -146,8 +146,7 @@ saveHighScore = (e) => {
     name: username.value,
   };
 
- 
-//////////////localStorage.setItem("mostRecentScore", time);
+  //////////////localStorage.setItem("mostRecentScore", time);
   highScores.push(score);
   highScores.sort((a, b) => b.score - a.score);
   highScores.splice(3);
