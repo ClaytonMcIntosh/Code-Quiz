@@ -67,10 +67,10 @@ const questions = [
   {
     questionNumber: 6,
     question: "Q6. Which of the following is an array method?",
-    answer1: "A. pop()",
-    answer2: "B. pip()",
-    answer3: "C. put()",
-    answer4: "D. place()",
+    answer1: "A. pop( )",
+    answer2: "B. pip( )",
+    answer3: "C. put( )",
+    answer4: "D. place( )",
     correctAnswer: 1,
   },
   {
@@ -127,6 +127,28 @@ function init() {
 
 //On loading page, check local storage for high scores and update high scores.
 
+const highScore = "Yeah";
+const hsJSON = JSON.stringify(highScore);
+
+localStorage.setItem("localHS", hsJSON);
+
+localStoreString = localStorage.getItem("localHS");
+
+var hsOpen = JSON.parse(localStoreString);
+
+function saveHS() {
+  var userIni = document.getElementById("entIni");
+  console.log(userIni.value);
+  var stringedUI = JSON.stringify(userIni.value);
+  console.log(stringedUI);
+  console.log(hsOpen);
+  var newHS = hsOpen.push(userIni.value);
+  console.log(newHS);
+  // localStoreString.push(userIni.value);
+
+  // localStorage.setItem("localHS", localStoreString);
+}
+
 //Hide questions and answers and show a start button at the start of the game.
 
 function hideAtStart() {
@@ -134,7 +156,7 @@ function hideAtStart() {
   answersB.style.display = "none";
   correctInfo.style.display = "none";
   incorrectInfo.style.display = "none";
-  enterHighScores.style.display = "none";
+  // enterHighScores.style.display = "none";
   startOver.style.display = "none";
 }
 
@@ -151,6 +173,8 @@ function unHideQandA() {
   questionB.style.display = "block";
   answersB.style.display = "block";
   startButton.style.display = "none";
+  mainPtag.style.display = "none";
+  mainHead.style.display = "none";
 }
 
 //On click of "Start", run timer (10 seconds per question)
@@ -223,6 +247,8 @@ function timesUp() {
   answersB.style.display = "none";
   timebox.style.display = "none";
   enterHighScores.style.display = "none";
+  mainHead.style.display = "block";
+  mainPtag.style.display = "block";
   mainHead.textContent = "Time's up!";
   mainPtag.textContent = "You're time ran out! Try again!!!";
   startOver.style.display = "block";
