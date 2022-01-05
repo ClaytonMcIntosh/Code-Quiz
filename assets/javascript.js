@@ -11,6 +11,7 @@ var timebox = document.getElementById("timeleft");
 var mainHead = document.getElementById("mainh1");
 var mainPtag = document.getElementById("mainp");
 var startOver = document.getElementById("restart");
+var hshead = document.getElementById("hshead");
 var time = 99;
 var questionNum = 0;
 
@@ -159,6 +160,7 @@ function hideAtStart() {
 
 //Function to start the game once the start button has been clicked.
 function startGame() {
+  hsUpdate();
   unHideQandA();
   startTimer();
   loadQuestion();
@@ -247,7 +249,6 @@ function endGame() {
   questionB.style.display = "none";
   answersB.style.display = "none";
   timebox.style.display = "none";
-
   localStorage.setItem("mostRecentScore", time);
   finalScore.innerText = mostRecentScore;
 }
@@ -287,6 +288,19 @@ saveHighScore = (e) => {
 
   localStorage.setItem("highScores", JSON.stringify(highScores));
 };
+
+//Updating the high scores.
+
+function hsUpdate() {
+  console.log(highScores);
+
+  // for (let i = 0; i < 2; i++) {
+  //   var highSCORES = document.createElement("p");
+  //   p.textContent = highScores[i];
+  //   p.class = "hs";
+  //   hshead.appendChild(highSCORES);
+  //   };
+}
 
 //Start the game:
 init();
