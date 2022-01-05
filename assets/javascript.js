@@ -19,8 +19,9 @@ var questionNum = 0;
 const username = document.getElementById("username");
 const saveScoreBtn = document.getElementById("saveScoreBtn");
 const finalScore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
+// const mostRecentScore = localStorage.getItem("mostRecentScore");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
 //below are the question and answer objects in an array
 
 const questions = [
@@ -130,29 +131,9 @@ const questions = [
 //Event listener to start the game.
 startButton.addEventListener("click", startGame);
 
-finalScore.innerText = mostRecentScore;
-
 username.addEventListener("keyup", () => {
   saveScoreBtn.disabled = !username.value;
 });
-
-//function to set high score
-
-saveHighScore = (e) => {
-  e.preventDefault();
-
-  const score = {
-    score: mostRecentScore,
-    name: username.value,
-  };
-
-  //////////////localStorage.setItem("mostRecentScore", time);
-  highScores.push(score);
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.splice(3);
-
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-};
 
 //function to reset game
 function reload() {
@@ -266,6 +247,9 @@ function endGame() {
   questionB.style.display = "none";
   answersB.style.display = "none";
   timebox.style.display = "none";
+
+  localStorage.setItem("mostRecentScore", time);
+  finalScore.innerText = mostRecentScore;
 }
 
 //When the timer reaches 0 the game ends
@@ -284,6 +268,25 @@ function timesUp() {
     reload();
   });
 }
+
+//function to set high score
+
+const mostRecentScore = localStorage.getItem("mostRecentScore");
+
+saveHighScore = (e) => {
+  e.preventDefault();
+
+  const score = {
+    score: mostRecentScore,
+    name: username.value,
+  };
+
+  highScores.push(score);
+  highScores.sort((a, b) => b.score - a.score);
+  highScores.splice(3);
+
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+};
 
 //Start the game:
 init();
