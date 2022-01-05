@@ -250,7 +250,7 @@ function endGame() {
   answersB.style.display = "none";
   timebox.style.display = "none";
   localStorage.setItem("mostRecentScore", time);
-  finalScore.innerText = mostRecentScore;
+  finalScore.innerText = time;
 }
 
 //When the timer reaches 0 the game ends
@@ -272,10 +272,10 @@ function timesUp() {
 
 //function to set high score
 
-const mostRecentScore = localStorage.getItem("mostRecentScore");
-
 saveHighScore = (e) => {
   e.preventDefault();
+
+  const mostRecentScore = localStorage.getItem("mostRecentScore");
 
   const score = {
     score: mostRecentScore,
