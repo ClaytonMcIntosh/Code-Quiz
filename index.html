@@ -1,74 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Quiz! 2022</title>
-    <link rel="stylesheet" href="assets/css.css">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
-
-</head>
-<body id="body">
+    <link rel="stylesheet" href="assets/css.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body id="body">
     <header>
-        <a href="#hscores" class="viewhs" id="top">View Highscores</a>
-        <div class="timeleft" id="timeleft">
-            <p>Time: <span id="timeCount">100</span></p>
-        </div>
-
-
+      <a href="#hscores" class="viewhs" id="top">View Highscores</a>
+      <div class="timeleft" id="timeleft">
+        <p>Time: <span id="timeCount">100</span></p>
+      </div>
     </header>
 
-        <section id="main">
-            <hr>            
-            <div class="intro">
-            <h1 id="mainh1">Code Quiz!</h1>
-            <p id="mainp">Information on how to play the game is as follows: blah blah blah.</p>
-            </div>
-            <div id="startbut">
-                <h1>Start</h1>
-            </div>
-            <div id="restart">
-                <h1>Start over!</h1>
-            </div>
-            <div id="question">
-                <h1 id="questionText">Q1. Question 1?</h1>
-            </div>
-            <div class="answers" id="answers">
+    <section id="main">
+      <hr />
+      <div class="intro">
+        <h1 id="mainh1">Code Quiz!</h1>
+        <p id="mainp">
+          Information on how to play the game is as follows: blah blah blah.
+        </p>
+      </div>
+      <div id="startbut">
+        <h1>Start</h1>
+      </div>
+      <div id="restart">
+        <h1>Start over!</h1>
+      </div>
+      <div id="question">
+        <h1 id="questionText">Q1. Question 1?</h1>
+      </div>
+      <div class="answers" id="answers"></div>
+      <div id="enterHS">
+        <h2 class="cent"> Final Score: <span id="finalScore">0</h1>
+        <p class="cent">Place your initials to see if you made it into the top scores:</p>
+            <form id="form">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="username"
+            />
+            <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled> Submit </button>
 
-            </div>
-            <div id="enterHS">
-            <form>
-                <label for="enterInitials">Enter initials into high score:</label><br>
-                <input type="text" id="entIni" name="initials" value=""><br>
-                <button id="submitBtn" onclick="saveHS()">Submit</button>
-            </form>
-              
-            </div>
+            </button>
+        </form>
+      </div>
 
-            <hr>
-            <div id="correct">
-            <p>Correct!</p>
-            </div>
-            <div id="incorrect">
-                <p>Incorrect! ( - 10 seconds.)</p>
-                </div>
-        </section>
+      <hr />
+      <div id="correct">
+        <p>Correct!</p>
+      </div>
+      <div id="incorrect">
+        <p>Incorrect! ( - 10 seconds.)</p>
+      </div>
+    </section>
 
-        <section id="hscores">
-            <div id="hscon">
-            <h2 class="hshead">High Scores:</h2>
-            <p class="hs">1.</p>
-            <p class="hs">2.</p>
-            <p class="hs">3.</p>
-                <div id="backbtn">
-                    <a href="#body" id="back">Back</a>
-                </div>
-            </div>
+    <section id="hscores">
+      <div id="hscon">
+        <h2 class="hshead">High Scores:</h2>
+        <p class="hs">1.</p>
+        <p class="hs">2.</p>
+        <p class="hs">3.</p>
+        <div id="backbtn">
+          <a href="#body" id="back">Back</a>
+        </div>
+      </div>
+    </section>
 
-        </section>
-
-<script src="assets/javascript.js"></script>
-</body>
+    <script src="assets/javascript.js"></script>
+  </body>
 </html>

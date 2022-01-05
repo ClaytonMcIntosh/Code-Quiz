@@ -100,7 +100,30 @@ h1 {
 }
 
 .intro h1,
-.intro p {
+.intro p,
+.cent {
+  text-align: center;
+}
+
+#form {
+  text-align: center;
+}
+
+#username {
+  width: 50%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--darkyellow);
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -139,6 +162,11 @@ h1 {
   color: var(--green);
   font-family: "Karla", sans-serif;
   font-size: 1.2rem;
+}
+
+#enterHS {
+  background-color: hotpink;
+  margin: 20px;
 }
 
 #incorrect {

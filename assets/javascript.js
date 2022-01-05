@@ -14,6 +14,14 @@ var startOver = document.getElementById("restart");
 var time = 99;
 var questionNum = 0;
 
+//variables for saving high scores.
+
+const username = document.getElementById("username");
+const saveScoreBtn = document.getElementById("saveScoreBtn");
+const finalScore = document.getElementById("finalScore");
+const mostRecentScore = localStorage.getItem("mostRecentScore");
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
 //below are the question and answer objects in an array
 
 const questions = [
@@ -109,6 +117,15 @@ const questions = [
     answer4: "D. in the cloud",
     correctAnswer: 2,
   },
+  {
+    questionNumber: 11,
+    question: "Q11.",
+    answer1: "A. ",
+    answer2: "B. ",
+    answer3: "C.",
+    answer4: "D. ",
+    correctAnswer: 1,
+  },
 ];
 
 //Event listener to start the game.
@@ -127,27 +144,25 @@ function init() {
 
 //On loading page, check local storage for high scores and update high scores.
 
-const highScore = "Yeah";
-const hsJSON = JSON.stringify(highScore);
+// finalScore.innerText = mostRecentScore;
 
-localStorage.setItem("localHS", hsJSON);
+// username.addEventListener("keyup", () => {
+//   saveScoreBtn.disabled = !username.value;
+// });
 
-localStoreString = localStorage.getItem("localHS");
+// //function runs when user clicks
 
-var hsOpen = JSON.parse(localStoreString);
-
-function saveHS() {
-  var userIni = document.getElementById("entIni");
-  console.log(userIni.value);
-  var stringedUI = JSON.stringify(userIni.value);
-  console.log(stringedUI);
-  console.log(hsOpen);
-  var newHS = hsOpen.push(userIni.value);
-  console.log(newHS);
-  // localStoreString.push(userIni.value);
-
-  // localStorage.setItem("localHS", localStoreString);
-}
+// saveHighScore = (e) => {
+//   e.preventDefault();
+//   const score = {
+//     score: mostRecentScore,
+//     name: username.value,
+//   };
+//   highScores.push(score);
+//   highScores.sort((a, b) => b.score - a.score);
+//   highScores.splice(3);
+//   localStorage.setItem("highScores", JSON.stringify(highScores));
+// };
 
 //Hide questions and answers and show a start button at the start of the game.
 
@@ -156,7 +171,7 @@ function hideAtStart() {
   answersB.style.display = "none";
   correctInfo.style.display = "none";
   incorrectInfo.style.display = "none";
-  // enterHighScores.style.display = "none";
+  enterHighScores.style.display = "none";
   startOver.style.display = "none";
 }
 
@@ -214,6 +229,14 @@ function loadQuestion() {
   }
 
   questionNum = questionNum + 1;
+
+  console.log(questionNum);
+
+  if (questionNum == 11) {
+    console.log("end");
+    endGame();
+  }
+
   return;
 }
 
@@ -240,6 +263,34 @@ init();
 
 //When all questions are answered the game ends
 
+function endGame() {
+  localStorage.setItem("mostRecentScore", time);
+  enterHighScores.style.display = "block";
+  questionB.style.display = "none";
+  answersB.style.display = "none";
+  timebox.style.display = "none";
+
+  finalScore.innerText = mostRecentScore;
+
+  username.addEventListener("keyup", () => {
+    saveScoreBtn.disabled = !username.value;
+  });
+
+  //function runs when user clicks
+
+  saveHighScore = (e) => {
+    e.preventDefault();
+    const score = {
+      score: mostRecentScore,
+      name: username.value,
+    };
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(3);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+  };
+}
+
 //When the timer reaches 0 the game ends
 
 function timesUp() {
@@ -256,9 +307,3 @@ function timesUp() {
     reload();
   });
 }
-
-//User will enter name into high scores.
-
-//The highest score is added to the top, lowest to the bottom.
-
-//When game is over, user can start again.
