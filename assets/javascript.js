@@ -262,7 +262,7 @@ function timesUp() {
   mainHead.style.display = "block";
   mainPtag.style.display = "block";
   mainHead.textContent = "Time's up!";
-  mainPtag.textContent = "You're time ran out! Try again!!!";
+  mainPtag.textContent = "Your time ran out! Try again!!!";
   startOver.style.display = "block";
   startOver.addEventListener("click", function () {
     reload();
