@@ -1,4 +1,5 @@
-//declare variables
+//variables
+
 var startButton = document.getElementById("startbut");
 var questionB = document.getElementById("question");
 var questionText = document.getElementById("questionText");
@@ -23,7 +24,7 @@ const saveScoreBtn = document.getElementById("saveScoreBtn");
 const finalScore = document.getElementById("finalScore");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-//below are the question and answer objects in an array
+//question and answer objects in an array
 
 const questions = [
   {
@@ -129,7 +130,7 @@ const questions = [
   },
 ];
 
-//Event listener to start the game.
+//Event listeners
 startButton.addEventListener("click", startGame);
 
 username.addEventListener("keyup", () => {
@@ -160,7 +161,6 @@ function hideAtStart() {
 
 //Function to start the game once the start button has been clicked.
 function startGame() {
-  // hsUpdate();
   unHideQandA();
   startTimer();
   loadQuestion();
@@ -176,6 +176,8 @@ function unHideQandA() {
   mainHead.style.display = "none";
 }
 
+//function to start timer
+
 function startTimer() {
   myInterval = setInterval(function () {
     timer.textContent = time--;
@@ -185,15 +187,13 @@ function startTimer() {
   }, 1000);
 }
 
-//function to fill in the quesions.
+//function to fill in the quesions, with buttons and event listener
 
 function loadQuestion() {
   var currentQuestion = questions[questionNum];
   questionText.textContent = currentQuestion.question;
 
   answersB.innerHTML = "";
-
-  //creating the buttons and the event listener
 
   for (let i = 1; i < 5; i++) {
     var button = document.createElement("button");
@@ -269,7 +269,7 @@ function timesUp() {
   });
 }
 
-//function to set high score
+//function to sort and save 3 high scores
 
 saveHighScore = (e) => {
   e.preventDefault();

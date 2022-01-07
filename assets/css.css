@@ -101,10 +101,7 @@ h1 {
 
 .intro h1,
 .intro p,
-.cent {
-  text-align: center;
-}
-
+.cent,
 #form {
   text-align: center;
 }
@@ -172,6 +169,10 @@ h1 {
   margin: 20px;
   color: var(--green);
   padding-left: 20px;
+}
+
+#username {
+  border: 1, solid, var(--darkyellow);
 }
 
 #incorrect p {
