@@ -23,6 +23,13 @@ const finalScore = document.getElementById("finalScore");
 // const mostRecentScore = localStorage.getItem("mostRecentScore");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+// const score = [{
+//   score: "0",
+//   name: "N/A",
+// },
+// {},
+// {},]
+
 //below are the question and answer objects in an array
 
 const questions = [
@@ -287,19 +294,17 @@ saveHighScore = (e) => {
   highScores.splice(3);
 
   localStorage.setItem("highScores", JSON.stringify(highScores));
+  hsUpdate();
 };
 
 //Updating the high scores.
 
-function hsUpdate() {
-  console.log(highScores);
+hsUpdate();
 
-  // for (let i = 0; i < 2; i++) {
-  //   var highSCORES = document.createElement("p");
-  //   p.textContent = highScores[i];
-  //   p.class = "hs";
-  //   hshead.appendChild(highSCORES);
-  //   };
+function hsUpdate() {
+  hs1.textContent = JSON.stringify(highScores[0].name);
+  hs2.textContent = JSON.stringify(highScores[1].name);
+  hs3.textContent = JSON.stringify(highScores[2].name);
 }
 
 //Start the game:
