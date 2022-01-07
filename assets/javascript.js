@@ -14,21 +14,14 @@ var startOver = document.getElementById("restart");
 var hshead = document.getElementById("hshead");
 var time = 99;
 var questionNum = 0;
+var myInterval = 0;
 
 //variables for saving high scores.
 
 const username = document.getElementById("username");
 const saveScoreBtn = document.getElementById("saveScoreBtn");
 const finalScore = document.getElementById("finalScore");
-// const mostRecentScore = localStorage.getItem("mostRecentScore");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
-// const score = [{
-//   score: "0",
-//   name: "N/A",
-// },
-// {},
-// {},]
 
 //below are the question and answer objects in an array
 
@@ -183,11 +176,8 @@ function unHideQandA() {
   mainHead.style.display = "none";
 }
 
-//On click of "Start", run timer (10 seconds per question)
-
-// const timeForStop =
 function startTimer() {
-  interval = window.setInterval(function () {
+  myInterval = setInterval(function () {
     timer.textContent = time--;
     if (time < 0) {
       timesUp();
@@ -256,11 +246,10 @@ function endGame() {
   enterHighScores.style.display = "block";
   questionB.style.display = "none";
   answersB.style.display = "none";
-  // timebox.style.display = "none";
+  timebox.style.display = "none";
   localStorage.setItem("mostRecentScore", time);
   finalScore.innerText = time;
-
-  window.clearInterval(inverval);
+  clearInterval(myInterval);
 }
 
 //When the timer reaches 0 the game ends
@@ -298,6 +287,8 @@ saveHighScore = (e) => {
 
   localStorage.setItem("highScores", JSON.stringify(highScores));
   hsUpdate();
+  reload();
+  document.location = "#hscores";
 };
 
 //Updating the high scores.
@@ -305,9 +296,16 @@ saveHighScore = (e) => {
 hsUpdate();
 
 function hsUpdate() {
-  hs1.textContent = JSON.stringify(highScores[0].name);
-  hs2.textContent = JSON.stringify(highScores[1].name);
-  hs3.textContent = JSON.stringify(highScores[2].name);
+  if (highScores.length >= 3) {
+    hs1.textContent = JSON.stringify(highScores[0].name);
+    hs2.textContent = JSON.stringify(highScores[1].name);
+    hs3.textContent = JSON.stringify(highScores[2].name);
+  } else if (highScores.length == 2) {
+    hs1.textContent = JSON.stringify(highScores[0].name);
+    hs2.textContent = JSON.stringify(highScores[1].name);
+  } else if (highScores.length == 1) {
+    hs1.textContent = JSON.stringify(highScores[0].name);
+  }
 }
 
 //Start the game:
