@@ -167,7 +167,7 @@ function hideAtStart() {
 
 //Function to start the game once the start button has been clicked.
 function startGame() {
-  hsUpdate();
+  // hsUpdate();
   unHideQandA();
   startTimer();
   loadQuestion();
@@ -185,8 +185,9 @@ function unHideQandA() {
 
 //On click of "Start", run timer (10 seconds per question)
 
+// const timeForStop =
 function startTimer() {
-  setInterval(function () {
+  interval = window.setInterval(function () {
     timer.textContent = time--;
     if (time < 0) {
       timesUp();
@@ -255,9 +256,11 @@ function endGame() {
   enterHighScores.style.display = "block";
   questionB.style.display = "none";
   answersB.style.display = "none";
-  timebox.style.display = "none";
+  // timebox.style.display = "none";
   localStorage.setItem("mostRecentScore", time);
   finalScore.innerText = time;
+
+  window.clearInterval(inverval);
 }
 
 //When the timer reaches 0 the game ends
