@@ -52,7 +52,7 @@ const questions = [
       "Q3. Which statement is NOT a conditional statement in JavaScript??",
     answer1: "A. switch",
     answer2: "B. else if",
-    answer3: "C. then",
+    answer3: "C. console.log",
     answer4: "D. else",
     correctAnswer: 3,
   },
@@ -212,10 +212,7 @@ function loadQuestion() {
 
   questionNum = questionNum + 1;
 
-  console.log(questionNum);
-
   if (questionNum == 11) {
-    console.log("end");
     endGame();
   }
 
