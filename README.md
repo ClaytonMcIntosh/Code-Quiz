@@ -1,4 +1,4 @@
-# Homework-04-Code-Quiz
+# Code-Quiz
 
 ## Task
 
